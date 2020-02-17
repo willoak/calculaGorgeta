@@ -1,0 +1,978 @@
+@{
+  Random rnd = new Random();
+  int n = rnd.Next();
+  string templateN = "3";
+  string btn = "COMPRAR";
+  string fmodapraia = "Moda Praia";
+  string fmodacasual = "Moda Casual";
+  string fmodafitness = "Moda Fitness";
+  string fmodaacessorios = "Acessórios";
+  string fmodamasculino = "Moda Masculina";
+  string fmodaoutlet = "Outlet";
+  string fmodakids = "Kids";
+  string fmodaplusize = "Plus Size";
+  string fmodacategoria = "Categoria |";
+}
+
+<style>
+.smarthint {
+    max-width: 100% !important;
+}
+.collection-product-image {
+    padding: 2px;
+}
+.grid.mini-banners {
+    display: flex;
+    flex-direction: column;
+}
+.order {flex-grow: 1}
+
+#smarthint-position-1 {
+    order: 15;
+}
+#smarthint-position-2 {
+    order: 25;
+}
+#smarthint-position-3 {
+    order: 35;
+}
+#smarthint-position-4 {
+    order: 45;
+}
+#smarthint-position-5 {
+    order: 55;
+}
+.order1  {order: @TemplateSettings.boxesG0Posicao}
+.order2  {order: @TemplateSettings.boxesG1Posicao}
+.order3  {order: @TemplateSettings.boxesG2Posicao}
+.order4  {order: @TemplateSettings.boxesG3Posicao}
+.order5  {order: @TemplateSettings.boxesG4Posicao}
+.order6  {order: @TemplateSettings.boxesG5Posicao}
+.order7  {order: @TemplateSettings.boxesG6Posicao}
+.order8  {order: @TemplateSettings.boxesG7Posicao}
+.order9  {order: @TemplateSettings.boxesG8Posicao}
+.order10 {order: @TemplateSettings.boxesG9Posicao}  
+</style>
+<script>
+   function mostrarValorProduto(idProduto, bloco, miniBloco) {       
+      var urlProduto = 'https://www.liquidostore.com.br/public_api/v1/products/' + idProduto;
+      $.get(urlProduto, function(data){    
+        var targetValor = '#g' + bloco + ' .mdl-cell--4-col-tablet:eq(' + miniBloco + ') .v';     
+        $(targetValor).text('R$' + ((data.mainVariant.payInFullPrice).toFixed(2)).replace(".",",") );
+		var targetUrl = '#g' + bloco + ' .mdl-cell--4-col-tablet:eq(' + miniBloco + ') a';
+		$(targetUrl).attr('href',data.url + "/t/3");
+  		console.log(data.url);
+      });
+    }
+</script>
+
+<div class="grid mini-banners">
+  
+  <div class="atalho-categorias">
+    <h3>Nossas Categorias</h3>
+    <div class="mdl-grid mdl-grid--no-spacing">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/moda-praia" title="@fmodacategoria @fmodapraia"> 
+          <img src="~/Assets/Templates/@templateN/imagens/fast_moda_praia.jpg?@n" alt="@fmodacategoria @fmodapraia" title="@fmodacategoria @fmodapraia" />
+          <h4> @fmodapraia </h4>
+          </a> </div>
+        <!-- //box-img --> 
+      </div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/fitness" title="@fmodacategoria @fmodafitness"> 
+          <img src="~/Assets/Templates/@templateN/imagens/fast_fitness.jpg?@n" alt="@fmodacategoria @fmodafitness" title="@fmodacategoria @fmodafitness" />
+          <h4> @fmodafitness </h4>
+          </a> </div>
+        <!-- //box-img --> 
+      </div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/casual" title="@fmodacategoria @fmodacasual"> 
+          	<img src="~/Assets/Templates/@templateN/imagens/fast_casual.jpg?@n" alt="@fmodacategoria @fmodacasual" title="@fmodacategoria @fmodacasual" />
+          	<h4> @fmodacasual </h4>
+          </a> 
+  		</div>
+        <!-- //box-img --> 
+      </div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/bolsa-e-acessorios" title="@fmodacategoria @fmodaacessorios"> 
+          <img src="~/Assets/Templates/@templateN/imagens/fast_acessorios.jpg?@n" alt="@fmodacategoria @fmodaacessorios" title="@fmodacategoria @fmodaacessorios" />
+          <h4> @fmodaacessorios </h4>
+          </a> </div>
+        <!-- //box-img --> 
+      </div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/outlet" title="@fmodacategoria @fmodaoutlet"> 
+          <img src="~/Assets/Templates/@templateN/imagens/fast_outlet.jpg?@n" alt="@fmodacategoria @fmodaoutlet" title="@fmodacategoria @fmodaoutlet" />
+          <h4> @fmodaoutlet </h4>
+          </a> </div>
+        <!-- //box-img --> 
+      </div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/masculino" title="@fmodacategoria @fmodamasculino"> 
+          <img src="~/Assets/Templates/@templateN/imagens/fast_masculino.jpg?@n" alt="@fmodacategoria @fmodamasculino" title="@fmodacategoria @fmodamasculino" />
+          <h4> @fmodamasculino </h4>
+          </a> </div>
+        <!-- //box-img --> 
+      </div>
+	  <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/resultadopesquisa/t/3?pag=1&departamento=&buscarpor=plus%20size&smart=0" title="@fmodacategoria @fmodaplusize"> 
+          <img src="~/Assets/Templates/@templateN/imagens/fast_plus_size.jpg?@n" alt="@fmodacategoria @fmodaplusize" title="@fmodacategoria @fmodaplusize" />
+          <h4> @fmodaplusize </h4>
+          </a> </div>
+        <!-- //box-img --> 
+      </div>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img"> 
+          <a href="~/kids/t/3" title="@fmodacategoria @fmodakids"> 
+          <img src="~/Assets/Templates/@templateN/imagens/fast_kids.jpg?@n" alt="@fmodacategoria @fmodakids" title="@fmodacategoria @fmodakids" />
+          <h4> @fmodakids </h4>
+          </a> </div>
+        <!-- //box-img --> 
+      </div>
+    </div>
+
+  </div>
+
+  @if(TemplateSettings.boxesG0Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order1" id="g0">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG0Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG0Link" title="@TemplateSettings.boxesG0Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG0Imagem?@n" alt="@TemplateSettings.boxesG0Titulo" title="@TemplateSettings.boxesG0Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG0Mini1Link" title="@TemplateSettings.boxesG0Titulo | @TemplateSettings.boxesG0Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG0Mini1Imagem?@n" alt="@TemplateSettings.boxesG0Mini1Mensagem" title="@TemplateSettings.boxesG0Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG0Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG0Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG0Mini2Link" title="@TemplateSettings.boxesG0Titulo | @TemplateSettings.boxesG0Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG0Mini2Imagem?@n" alt="@TemplateSettings.boxesG0Mini2Mensagem" title="@TemplateSettings.boxesG0Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG0Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG0Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG0Mini3Link" title="@TemplateSettings.boxesG0Titulo | @TemplateSettings.boxesG0Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG0Mini3Imagem?@n" alt="@TemplateSettings.boxesG0Mini3Mensagem" title="@TemplateSettings.boxesG0Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG0Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG0Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG0Mini4Link" title="@TemplateSettings.boxesG0Titulo | @TemplateSettings.boxesG0Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG0Mini4Imagem?@n" alt="@TemplateSettings.boxesG0Mini4Mensagem" title="@TemplateSettings.boxesG0Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG0Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG0Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+	
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG0Id1Produto,0,0);
+        mostrarValorProduto(@TemplateSettings.boxesG0Id2Produto,0,1);
+        mostrarValorProduto(@TemplateSettings.boxesG0Id3Produto,0,2);
+        mostrarValorProduto(@TemplateSettings.boxesG0Id4Produto,0,3);
+      });
+	</script>
+  }
+
+  @if(TemplateSettings.boxesG1Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order2" id="g1">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG1Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG1Link" title="@TemplateSettings.boxesG1Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG1Imagem?@n" alt="@TemplateSettings.boxesG1Titulo" title="@TemplateSettings.boxesG1Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG1Mini1Link" title="@TemplateSettings.boxesG1Titulo | @TemplateSettings.boxesG1Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG1Mini1Imagem?@n" alt="@TemplateSettings.boxesG1Mini1Mensagem" title="@TemplateSettings.boxesG1Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG1Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG1Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG1Mini2Link" title="@TemplateSettings.boxesG1Titulo | @TemplateSettings.boxesG1Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG1Mini2Imagem?@n" alt="@TemplateSettings.boxesG1Mini2Mensagem" title="@TemplateSettings.boxesG1Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG1Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG1Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG1Mini3Link" title="@TemplateSettings.boxesG1Titulo | @TemplateSettings.boxesG1Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG1Mini3Imagem?@n" alt="@TemplateSettings.boxesG1Mini3Mensagem" title="@TemplateSettings.boxesG1Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG1Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG1Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG1Mini4Link" title="@TemplateSettings.boxesG1Titulo | @TemplateSettings.boxesG1Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG1Mini4Imagem?@n" alt="@TemplateSettings.boxesG1Mini4Mensagem" title="@TemplateSettings.boxesG1Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG1Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG1Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG1Id1Produto,1,0);
+        mostrarValorProduto(@TemplateSettings.boxesG1Id2Produto,1,1);
+        mostrarValorProduto(@TemplateSettings.boxesG1Id3Produto,1,2);
+        mostrarValorProduto(@TemplateSettings.boxesG1Id4Produto,1,3);
+      });
+	</script>
+  }
+
+  @if(TemplateSettings.boxesG2Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order3" id="g2">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG2Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG2Link" title="@TemplateSettings.boxesG2Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG2Imagem?@n" alt="@TemplateSettings.boxesG2Titulo" title="@TemplateSettings.boxesG2Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG2Mini1Link" title="@TemplateSettings.boxesG2Titulo | @TemplateSettings.boxesG2Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG2Mini1Imagem?@n" alt="@TemplateSettings.boxesG2Mini1Mensagem" title="@TemplateSettings.boxesG2Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG2Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG2Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG2Mini2Link" title="@TemplateSettings.boxesG2Titulo | @TemplateSettings.boxesG2Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG2Mini2Imagem?@n" alt="@TemplateSettings.boxesG2Mini2Mensagem" title="@TemplateSettings.boxesG2Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG2Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG2Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG2Mini3Link" title="@TemplateSettings.boxesG2Titulo | @TemplateSettings.boxesG2Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG2Mini3Imagem?@n" alt="@TemplateSettings.boxesG2Mini3Mensagem" title="@TemplateSettings.boxesG2Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG2Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG2Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG2Mini4Link" title="@TemplateSettings.boxesG2Titulo | @TemplateSettings.boxesG2Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG2Mini4Imagem?@n" alt="@TemplateSettings.boxesG2Mini4Mensagem" title="@TemplateSettings.boxesG2Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG2Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG2Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG2Id1Produto,2,0);
+        mostrarValorProduto(@TemplateSettings.boxesG2Id2Produto,2,1);
+        mostrarValorProduto(@TemplateSettings.boxesG2Id3Produto,2,2);
+        mostrarValorProduto(@TemplateSettings.boxesG2Id4Produto,2,3);
+      });
+	</script>
+  }
+
+
+  @if(TemplateSettings.boxesG3Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order4" id="g3">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG3Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG3Link" title="@TemplateSettings.boxesG3Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG3Imagem?@n" alt="@TemplateSettings.boxesG3Titulo" title="@TemplateSettings.boxesG3Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG3Mini1Link" title="@TemplateSettings.boxesG3Titulo | @TemplateSettings.boxesG3Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG3Mini1Imagem?@n" alt="@TemplateSettings.boxesG3Mini1Mensagem" title="@TemplateSettings.boxesG3Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG3Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG3Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG3Mini2Link" title="@TemplateSettings.boxesG3Titulo | @TemplateSettings.boxesG3Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG3Mini2Imagem?@n" alt="@TemplateSettings.boxesG3Mini2Mensagem" title="@TemplateSettings.boxesG3Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG3Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG3Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG3Mini3Link" title="@TemplateSettings.boxesG3Titulo | @TemplateSettings.boxesG3Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG3Mini3Imagem?@n" alt="@TemplateSettings.boxesG3Mini3Mensagem" title="@TemplateSettings.boxesG3Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG3Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG3Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG3Mini4Link" title="@TemplateSettings.boxesG3Titulo | @TemplateSettings.boxesG3Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG3Mini4Imagem?@n" alt="@TemplateSettings.boxesG3Mini4Mensagem" title="@TemplateSettings.boxesG3Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG3Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG3Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG3Id1Produto,3,0);
+        mostrarValorProduto(@TemplateSettings.boxesG3Id2Produto,3,1);
+        mostrarValorProduto(@TemplateSettings.boxesG3Id3Produto,3,2);
+        mostrarValorProduto(@TemplateSettings.boxesG3Id4Produto,3,3);
+      });
+	</script>
+  }
+
+  @if(TemplateSettings.boxesG4Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order5" id="g4">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG4Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG4Link" title="@TemplateSettings.boxesG4Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG4Imagem?@n" alt="@TemplateSettings.boxesG4Titulo" title="@TemplateSettings.boxesG4Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG4Mini1Link" title="@TemplateSettings.boxesG4Titulo | @TemplateSettings.boxesG4Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG4Mini1Imagem?@n" alt="@TemplateSettings.boxesG4Mini1Mensagem" title="@TemplateSettings.boxesG4Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG4Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG4Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG4Mini2Link" title="@TemplateSettings.boxesG4Titulo | @TemplateSettings.boxesG4Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG4Mini2Imagem?@n" alt="@TemplateSettings.boxesG4Mini2Mensagem" title="@TemplateSettings.boxesG4Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG4Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG4Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG4Mini3Link" title="@TemplateSettings.boxesG4Titulo | @TemplateSettings.boxesG4Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG4Mini3Imagem?@n" alt="@TemplateSettings.boxesG4Mini3Mensagem" title="@TemplateSettings.boxesG4Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG4Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG4Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG4Mini4Link" title="@TemplateSettings.boxesG4Titulo | @TemplateSettings.boxesG4Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG4Mini4Imagem?@n" alt="@TemplateSettings.boxesG4Mini4Mensagem" title="@TemplateSettings.boxesG4Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG4Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG4Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG4Id1Produto,4,0);
+        mostrarValorProduto(@TemplateSettings.boxesG4Id2Produto,4,1);
+        mostrarValorProduto(@TemplateSettings.boxesG4Id3Produto,4,2);
+        mostrarValorProduto(@TemplateSettings.boxesG4Id4Produto,4,3);
+      });
+	</script>
+  }
+
+  @if(TemplateSettings.boxesG5Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order6" id="g5">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG5Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG5Link" title="@TemplateSettings.boxesG5Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG5Imagem?@n" alt="@TemplateSettings.boxesG5Titulo" title="@TemplateSettings.boxesG5Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG5Mini1Link" title="@TemplateSettings.boxesG5Titulo | @TemplateSettings.boxesG5Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG5Mini1Imagem?@n" alt="@TemplateSettings.boxesG5Mini1Mensagem" title="@TemplateSettings.boxesG5Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG5Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG5Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG5Mini2Link" title="@TemplateSettings.boxesG5Titulo | @TemplateSettings.boxesG5Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG5Mini2Imagem?@n" alt="@TemplateSettings.boxesG5Mini2Mensagem" title="@TemplateSettings.boxesG5Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG5Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG5Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG5Mini3Link" title="@TemplateSettings.boxesG5Titulo | @TemplateSettings.boxesG5Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG5Mini3Imagem?@n" alt="@TemplateSettings.boxesG5Mini3Mensagem" title="@TemplateSettings.boxesG5Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG5Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG5Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG5Mini4Link" title="@TemplateSettings.boxesG5Titulo | @TemplateSettings.boxesG5Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG5Mini4Imagem?@n" alt="@TemplateSettings.boxesG5Mini4Mensagem" title="@TemplateSettings.boxesG5Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG5Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG5Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG5Id1Produto,5,0);
+        mostrarValorProduto(@TemplateSettings.boxesG5Id2Produto,5,1);
+        mostrarValorProduto(@TemplateSettings.boxesG5Id3Produto,5,2);
+        mostrarValorProduto(@TemplateSettings.boxesG5Id4Produto,5,3);
+      });
+	</script>
+  }
+
+  @if(TemplateSettings.boxesG6Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order7" id="g6">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG6Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG6Link" title="@TemplateSettings.boxesG6Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG6Imagem?@n" alt="@TemplateSettings.boxesG6Titulo" title="@TemplateSettings.boxesG6Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG6Mini1Link" title="@TemplateSettings.boxesG6Titulo | @TemplateSettings.boxesG6Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG6Mini1Imagem?@n" alt="@TemplateSettings.boxesG6Mini1Mensagem" title="@TemplateSettings.boxesG6Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG6Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG6Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG6Mini2Link" title="@TemplateSettings.boxesG6Titulo | @TemplateSettings.boxesG6Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG6Mini2Imagem?@n" alt="@TemplateSettings.boxesG6Mini2Mensagem" title="@TemplateSettings.boxesG6Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG6Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG6Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG6Mini3Link" title="@TemplateSettings.boxesG6Titulo | @TemplateSettings.boxesG6Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG6Mini3Imagem?@n" alt="@TemplateSettings.boxesG6Mini3Mensagem" title="@TemplateSettings.boxesG6Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG6Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG6Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG6Mini4Link" title="@TemplateSettings.boxesG6Titulo | @TemplateSettings.boxesG6Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG6Mini4Imagem?@n" alt="@TemplateSettings.boxesG6Mini4Mensagem" title="@TemplateSettings.boxesG6Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG6Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG6Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG6Id1Produto,6,0);
+        mostrarValorProduto(@TemplateSettings.boxesG6Id2Produto,6,1);
+        mostrarValorProduto(@TemplateSettings.boxesG6Id3Produto,6,2);
+        mostrarValorProduto(@TemplateSettings.boxesG6Id4Produto,6,3);
+      });
+	</script>
+  }
+
+
+  @if(TemplateSettings.boxesG7Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order8" id="g7">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG7Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG7Link" title="@TemplateSettings.boxesG7Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG7Imagem?@n" alt="@TemplateSettings.boxesG7Titulo" title="@TemplateSettings.boxesG7Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG7Mini1Link" title="@TemplateSettings.boxesG7Titulo | @TemplateSettings.boxesG7Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG7Mini1Imagem?@n" alt="@TemplateSettings.boxesG7Mini1Mensagem" title="@TemplateSettings.boxesG7Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG7Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG7Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG7Mini2Link" title="@TemplateSettings.boxesG7Titulo | @TemplateSettings.boxesG7Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG7Mini2Imagem?@n" alt="@TemplateSettings.boxesG7Mini2Mensagem" title="@TemplateSettings.boxesG7Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG7Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG7Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG7Mini3Link" title="@TemplateSettings.boxesG7Titulo | @TemplateSettings.boxesG7Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG7Mini3Imagem?@n" alt="@TemplateSettings.boxesG7Mini3Mensagem" title="@TemplateSettings.boxesG7Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG7Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG7Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG7Mini4Link" title="@TemplateSettings.boxesG7Titulo | @TemplateSettings.boxesG7Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG7Mini4Imagem?@n" alt="@TemplateSettings.boxesG7Mini4Mensagem" title="@TemplateSettings.boxesG7Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG7Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG7Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+	
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG7Id1Produto,7,0);
+        mostrarValorProduto(@TemplateSettings.boxesG7Id2Produto,7,1);
+        mostrarValorProduto(@TemplateSettings.boxesG7Id3Produto,7,2);
+        mostrarValorProduto(@TemplateSettings.boxesG7Id4Produto,7,3);
+      });
+	</script>
+  }
+
+  @if(TemplateSettings.boxesG8Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order9" id="g8">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG8Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG8Link" title="@TemplateSettings.boxesG8Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG8Imagem?@n" alt="@TemplateSettings.boxesG8Titulo" title="@TemplateSettings.boxesG8Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG8Mini1Link" title="@TemplateSettings.boxesG8Titulo | @TemplateSettings.boxesG8Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG8Mini1Imagem?@n" alt="@TemplateSettings.boxesG8Mini1Mensagem" title="@TemplateSettings.boxesG8Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG8Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG8Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG8Mini2Link" title="@TemplateSettings.boxesG8Titulo | @TemplateSettings.boxesG8Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG8Mini2Imagem?@n" alt="@TemplateSettings.boxesG8Mini2Mensagem" title="@TemplateSettings.boxesG8Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG8Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG8Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG8Mini3Link" title="@TemplateSettings.boxesG8Titulo | @TemplateSettings.boxesG8Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG8Mini3Imagem?@n" alt="@TemplateSettings.boxesG8Mini3Mensagem" title="@TemplateSettings.boxesG8Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG8Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG8Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG8Mini4Link" title="@TemplateSettings.boxesG8Titulo | @TemplateSettings.boxesG8Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG8Mini4Imagem?@n" alt="@TemplateSettings.boxesG8Mini4Mensagem" title="@TemplateSettings.boxesG8Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG8Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG8Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG8Id1Produto,8,0);
+        mostrarValorProduto(@TemplateSettings.boxesG8Id2Produto,8,1);
+        mostrarValorProduto(@TemplateSettings.boxesG8Id3Produto,8,2);
+        mostrarValorProduto(@TemplateSettings.boxesG8Id4Produto,8,3);
+      });
+	</script>
+  }
+
+  @if(TemplateSettings.boxesG9Exibir == "true") {
+  <!-- //////// -->
+  <div class="order order10" id="g9">  
+
+    <div class="text-center titulo-cores">
+      <h2>@TemplateSettings.boxesG9Titulo</h2>
+    </div>    
+    <div class="mdl-grid mdl-grid--no-spacing">
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--6-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG9Link" title="@TemplateSettings.boxesG9Titulo">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG9Imagem?@n" alt="@TemplateSettings.boxesG9Titulo" title="@TemplateSettings.boxesG9Titulo" />
+          </a> 
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG9Mini1Link" title="@TemplateSettings.boxesG9Titulo | @TemplateSettings.boxesG9Mini1Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG9Mini1Imagem?@n" alt="@TemplateSettings.boxesG9Mini1Mensagem" title="@TemplateSettings.boxesG9Mini1Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG9Mini1Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG9Mini1Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG9Mini2Link" title="@TemplateSettings.boxesG9Titulo | @TemplateSettings.boxesG9Mini2Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG9Mini2Imagem?@n" alt="@TemplateSettings.boxesG9Mini2Mensagem" title="@TemplateSettings.boxesG9Mini2Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG9Mini2Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG9Mini2Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG9Mini3Link" title="@TemplateSettings.boxesG9Titulo | @TemplateSettings.boxesG9Mini3Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG9Mini3Imagem?@n" alt="@TemplateSettings.boxesG9Mini3Mensagem" title="@TemplateSettings.boxesG9Mini3Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG9Mini3Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG9Mini3Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>
+
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <div class="box-img">
+          <a href="@TemplateSettings.boxesG9Mini4Link" title="@TemplateSettings.boxesG9Titulo | @TemplateSettings.boxesG9Mini4Mensagem">
+            <img src="~/Assets/Templates/@templateN/imagens/@TemplateSettings.boxesG9Mini4Imagem?@n" alt="@TemplateSettings.boxesG9Mini4Mensagem" title="@TemplateSettings.boxesG9Mini4Mensagem" />
+            <h4>
+              @TemplateSettings.boxesG9Mini4Mensagem<br />
+              <span class="v">R$@TemplateSettings.boxesG9Mini4Valor</span>
+              <span class="b">@btn</span>
+            </h4>
+          </a>
+        </div><!-- //box-img -->
+      </div>    
+
+    </div><!-- //mdl-grid -->
+  </div> 
+  <!-- /////// -->
+
+	<script>
+      $(document).ready(function(){
+		mostrarValorProduto(@TemplateSettings.boxesG9Id1Produto,9,0);
+        mostrarValorProduto(@TemplateSettings.boxesG9Id2Produto,9,1);
+        mostrarValorProduto(@TemplateSettings.boxesG9Id3Produto,9,2);
+        mostrarValorProduto(@TemplateSettings.boxesG9Id4Produto,9,3);
+      });
+	</script>
+  }
+
+
+</div><!-- ////// mini-banners -->
+
+    
