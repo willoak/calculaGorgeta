@@ -36,23 +36,22 @@ const PctItem = styled.Button`
 `;
 
 export default () => {
-
-  const [bill,setBill] = useState("");
+  const [bill, setBill] = useState('');
   const [gorgeta, setGorgeta] = useState(0);
   const [pct, setPct] = useState(10);
 
   const calcularGorjeta = () => {
     let nBill = parseFloat(bill);
-    if(nBill){
-      setGorgeta( nBill * pct / 100 );
+    if (nBill) {
+      setGorgeta((nBill * pct) / 100);
     } else {
-      //alert("Favor digitar");
+      alert('Favor digitar');
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     calcularGorjeta();
-  }, [pct]);
+  },[pct]);
 
   return (
       <Page>
@@ -65,21 +64,19 @@ export default () => {
         ></Input>
         <Text>Qual porcentagem gostaria de dar?</Text>
         <PctArea>
-          <PctItem title="5%" onPress={()=>setPct(5)}></PctItem>
-          <PctItem title="10%" onPress={()=>setPct(10)}></PctItem>
-          <PctItem title="15%" onPress={()=>setPct(15)}></PctItem>
-          <PctItem title="20%" onPress={()=>setPct(20)}></PctItem>
+          <PctItem title="5%" onPress={() => setPct(5)}></PctItem>
+          <PctItem title="10%" onPress={() => setPct(10)}></PctItem>
+          <PctItem title="15%" onPress={() => setPct(15)}></PctItem>
+          <PctItem title="20%" onPress={() => setPct(20)}></PctItem>
         </PctArea>
-        <Btn color="orange" title={`Calcular gorgeta (${pct}%) `} onPress={calcularGorjeta} />
+        <Btn color="orange" title={`Calcular gorgeta (${pct}%)`} onPress={calcularGorjeta} />
           {gorgeta > 0 && 
           <Page>
             <Text>Valor da conta: R$ {parseFloat(bill).toFixed(2)}</Text>
-            <Text>Gorgeta: R$ {parseFloat(gorgeta).toFixed(2)} ({pct}%) </Text>
+            <Text>Gorgeta: R$ {parseFloat(gorgeta).toFixed(2)} ({pct}%)</Text>
             <Text>Total: R$ {(parseFloat(bill) + parseFloat(gorgeta)).toFixed(2)}</Text>
           </Page>
         }
       </Page>
   );
 }
-
-
